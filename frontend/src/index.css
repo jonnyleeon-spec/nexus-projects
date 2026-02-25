@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+/* ========== PALETA DE COLORES PERSONALIZADA ========== */
+@theme {
+  --color-trust-light: #f6fef9;
+  --color-trust-surface: #e8f7ef;
+  --color-trust-primary: #059669;
+  --color-trust-dark: #0d7e5d;
+  --color-trust-deep: #065f46;
+  --color-gray-500: #6b7280;
+  --color-gray-900: #111827;
+}
+
+/* ========== ANIMACIONES UTILIZADAS EN EL COMPONENTE ========== */
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+.animate-shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
