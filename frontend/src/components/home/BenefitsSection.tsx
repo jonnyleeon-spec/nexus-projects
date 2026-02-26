@@ -2,16 +2,19 @@ import React from "react";
 import {
   Briefcase,
   Building,
-  CreditCard,
+  CircleDollarSign,
   TrendingUp,
-  CheckCircle,
-  Users,
-  ShieldCheck,
-  Zap,
-  Package,
-  Truck,
   BadgeCheck,
-  Star,
+  Users,
+  HeartHandshake,
+  Timer,
+  Package,
+  Store,
+  Medal,
+  Eye,
+  UserRound,
+  Target,
+  FileBadge,
 } from "lucide-react";
 
 const BenefitsSection: React.FC = () => {
@@ -19,90 +22,84 @@ const BenefitsSection: React.FC = () => {
     {
       role: "Para Clientes",
       color: "#059669",
-      description: "Encuentra el talento perfecto para tus proyectos",
+      description: "Profesionales verificados, cotizaciones rápidas",
       icon: Building,
       items: [
         {
-          icon: CheckCircle,
-          title: "Talento Verificado",
-          description:
-            "Profesionales con calidad garantizada y experiencia comprobada",
+          icon: BadgeCheck,
+          title: "Profesionales verificados",
+          description: "Cada consultor pasa por un proceso de validación.",
         },
         {
-          icon: Users,
-          title: "Un Solo Contacto",
-          description: "Simplificamos toda la gestión y coordinación",
+          icon: UserRound,
+          title: "Un solo contacto",
+          description: "Nosotros coordinamos, tú solo disfrutas el resultado.",
         },
         {
-          icon: ShieldCheck,
-          title: "Calidad Garantizada",
-          description:
-            "Supervisión constante y control de calidad en cada proyecto",
+          icon: HeartHandshake,
+          title: "Acompañamiento",
+          description: "Seguimiento durante todo el proyecto.",
         },
         {
-          icon: Zap,
-          title: "Flexibilidad Total",
-          description: "Escalable según tus necesidades y presupuesto",
+          icon: Timer,
+          title: "Cotización rápida",
+          description: "Recibe propuestas en poco tiempo.",
         },
       ],
     },
     {
       role: "Para Profesionales",
       color: "#0d7e5d",
-      description: "Desarrolla tu carrera con proyectos desafiantes",
+      description: "Oportunidades de trabajo y respaldo",
       icon: Briefcase,
       items: [
         {
-          icon: TrendingUp,
-          title: "Trabajo Constante",
-          description:
-            "Flujo continuo de proyectos verificados y bien remunerados",
+          icon: Briefcase,
+          title: "Proyectos constantes",
+          description: "Accede a clientes que buscan tu expertise.",
         },
         {
-          icon: Star,
-          title: "Respaldo Institucional",
-          description: "Trabaja con el respaldo de una consultoría reconocida",
+          icon: FileBadge,
+          title: "Respaldo administrativo",
+          description: "Te apoyamos en cobranza y gestión.",
         },
         {
-          icon: CreditCard,
-          title: "Pagos Garantizados",
-          description:
-            "Sin preocuparte por cobranzas o procesos administrativos",
+          icon: CircleDollarSign,
+          title: "Pagos garantizados",
+          description: "Nos encargamos de la cobranza, tú solo trabajas.",
         },
         {
-          icon: BadgeCheck,
-          title: "Crecimiento Profesional",
-          description: "Accede a proyectos diversos que impulsan tu carrera",
+          icon: Eye,
+          title: "Visibilidad",
+          description: "Formas parte de una red en crecimiento.",
         },
       ],
     },
     {
       role: "Para Proveedores",
       color: "#065f46",
-      description: "Comercializa tus productos en nuestro marketplace",
+      description: "Prepárate para nuestro marketplace",
       icon: Package,
       items: [
         {
-          icon: Truck,
-          title: "Nuevo Canal de Ventas",
-          description:
-            "Accede a una base de clientes y profesionales verificados",
+          icon: Store,
+          title: "Canal de ventas futuro",
+          description: "Sé de los primeros en ofrecer productos.",
         },
         {
-          icon: Users,
-          title: "Audiencia Cualificada",
-          description: "Clientes y profesionales que necesitan tus productos",
+          icon: Target,
+          title: "Audiencia cualificada",
+          description: "Clientes y profesionales que necesitan insumos.",
         },
         {
-          icon: ShieldCheck,
-          title: "Certificación Nexus",
-          description: "Sello de calidad que genera confianza en tus productos",
+          icon: Medal,
+          title: "Certificación",
+          description: "Destaca como proveedor confiable.",
         },
         {
           icon: TrendingUp,
-          title: "Crecimiento de Marca",
-          description:
-            "Visibilidad en proyectos de alto impacto y reconocimiento",
+          title: "Crecimiento",
+          description: "Conecta con proyectos de alto impacto.",
         },
       ],
     },
@@ -111,24 +108,20 @@ const BenefitsSection: React.FC = () => {
   return (
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Beneficios para <span className="text-[#059669]">Todos</span>
+            Beneficios para <span className="text-[#059669]">todos</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Un ecosistema completo donde clientes, profesionales y proveedores
-            crecen juntos
+            Construimos un ecosistema donde clientes, profesionales y proveedores crecen juntos.
           </p>
         </div>
 
-        {/* Benefits Grid - 3 Columnas */}
         <div className="grid lg:grid-cols-3 gap-8">
           {benefitsData.map((benefitCategory, categoryIndex) => {
             const RoleIcon = benefitCategory.icon;
             return (
               <div key={categoryIndex} className="flex flex-col h-full">
-                {/* Category Header */}
                 <div className="text-center mb-8">
                   <div
                     className="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center"
@@ -147,7 +140,6 @@ const BenefitsSection: React.FC = () => {
                   </p>
                 </div>
 
-                {/* Benefits List */}
                 <div className="space-y-4 flex-1">
                   {benefitCategory.items.map((benefit, benefitIndex) => {
                     const BenefitIcon = benefit.icon;

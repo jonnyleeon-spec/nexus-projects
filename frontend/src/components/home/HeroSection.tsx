@@ -7,6 +7,7 @@ const HeroSection: React.FC = () => {
 
   return (
     <section className="relative h-screen min-h-[600px] w-full overflow-hidden bg-black">
+      {/* Video de fondo */}
       <video
         autoPlay
         muted
@@ -17,156 +18,76 @@ const HeroSection: React.FC = () => {
         <source src="/videos/hero-timelapse.mp4" type="video/mp4" />
       </video>
 
-      {/* Overlay más sutil */}
+      {/* Overlay verde degradado */}
       <div
         className="absolute inset-0"
         style={{
           background:
             "linear-gradient(to right, rgba(17, 24, 39, 0.7), rgba(6, 95, 70, 0.4))",
         }}
-      ></div>
+      />
 
-      <div className="relative z-10 text-center text-white max-w-6xl mx-auto px-4 h-full flex flex-col justify-center">
-        <div>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-            {user ? (
-              <>
-                Bienvenido,{" "}
-                <span style={{ color: "#e8f7ef" }}>{user.name}</span>
-              </>
-            ) : (
-              <>
-                Consultoría que{" "}
-                <span style={{ color: "#e8f7ef" }}>Resuelve</span>{" "}
-                <span style={{ color: "#059669" }}>Problemas</span>
-              </>
-            )}
-          </h1>
-
-          <p className="text-xl md:text-2xl mb-8" style={{ color: "#f6fef9" }}>
-            {user
-              ? `Accede a tu ${
-                  user.role === "professional"
-                    ? "próximos proyectos"
-                    : "panel de gestión"
-                }`
-              : "Conectamos empresas con consultores especializados para optimizar procesos, mejorar rendimiento y resolver desafíos empresariales."}
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            {user ? (
+      {/* Contenido */}
+      <div className="relative z-10 flex flex-col items-center justify-center h-full px-4 text-center text-white max-w-6xl mx-auto">
+        {user ? (
+          <>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+              Bienvenido de nuevo, <span className="text-[#e8f7ef]">{user.name}</span>
+            </h1>
+            <p className="text-xl md:text-2xl mb-8 text-[#f6fef9]">
+              {user.role === "professional"
+                ? "Tus próximos proyectos te esperan."
+                : "Gestiona tus solicitudes y da seguimiento a tus proyectos."}
+            </p>
+            <Link
+              to="/dashboard"
+              className="px-8 py-4 bg-[#059669] hover:bg-[#0d7e5d] rounded-lg font-semibold text-lg transition-all transform hover:scale-105 shadow-lg"
+            >
+              Ir a mi panel
+            </Link>
+          </>
+        ) : (
+          <>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
+              Soluciones técnicas <br className="hidden sm:block" />
+              <span className="text-[#e8f7ef]">a la medida</span> de cada proyecto
+            </h1>
+            <p className="text-lg md:text-xl lg:text-2xl mb-8 max-w-3xl text-[#f6fef9]">
+              Conectamos tu necesidad con el profesional indicado: desde reparar una PC hasta construir un muro. Un solo punto de contacto.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
               <Link
-                to="/dashboard"
-                className="px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg border-2"
-                style={{
-                  backgroundColor: "transparent",
-                  color: "#f6fef9",
-                  borderColor: "#059669",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = "#059669";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = "transparent";
-                }}
+                to="/register?type=client"
+                className="px-8 py-4 bg-[#059669] hover:bg-[#0d7e5d] rounded-lg font-semibold text-lg transition-all transform hover:scale-105 shadow-lg"
               >
-                {user.role === "professional"
-                  ? "Ver Mis Proyectos"
-                  : "Ir al Dashboard"}
+                Cotizar proyecto
               </Link>
-            ) : (
-              <>
-                <Link
-                  to="/register?type=client"
-                  className="px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
-                  style={{
-                    backgroundColor: "#059669",
-                    color: "#f6fef9",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = "#0d7e5d";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = "#059669";
-                  }}
-                >
-                  Solicitar Consultoría
-                </Link>
-                <Link
-                  to="/register?type=professional"
-                  className="px-8 py-4 rounded-lg font-semibold text-lg border-2 transition-all duration-300 backdrop-blur-sm"
-                  style={{
-                    backgroundColor: "transparent",
-                    color: "#f6fef9",
-                    borderColor: "#f6fef9",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = "#f6fef9";
-                    e.currentTarget.style.color = "#111827";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = "transparent";
-                    e.currentTarget.style.color = "#f6fef9";
-                  }}
-                >
-                  Ser Consultor
-                </Link>
-              </>
-            )}
-          </div>
-        </div>
-
-        {/* Áreas de especialidad */}
-        {!user && (
-          <div
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 pt-8"
-            style={{ borderTop: "1px solid rgba(248, 254, 249, 0.2)" }}
-          >
-            <div>
-              <div
-                className="text-lg font-semibold"
-                style={{ color: "#e8f7ef" }}
+              <Link
+                to="/register?type=professional"
+                className="px-8 py-4 bg-transparent border-2 border-white hover:bg-white hover:text-gray-900 rounded-lg font-semibold text-lg transition-all transform hover:scale-105 backdrop-blur-sm"
               >
-                Ingeniería
+                Soy profesional
+              </Link>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16 pt-8 border-t border-white/20 text-sm md:text-base">
+              <div>
+                <div className="font-semibold text-[#e8f7ef]">Construcción</div>
+                <div className="text-[#f6fef9]">Drywall, acabados</div>
               </div>
-              <div className="text-sm" style={{ color: "#f6fef9" }}>
-                Especializada
+              <div>
+                <div className="font-semibold text-[#059669]">Tecnología</div>
+                <div className="text-[#f6fef9]">Reparación, desarrollo</div>
+              </div>
+              <div>
+                <div className="font-semibold text-[#e8f7ef]">Logística</div>
+                <div className="text-[#f6fef9]">Supervisión, procesos</div>
+              </div>
+              <div>
+                <div className="font-semibold text-[#059669]">Asesoría</div>
+                <div className="text-[#f6fef9]">Remota, preventiva</div>
               </div>
             </div>
-            <div>
-              <div
-                className="text-lg font-semibold"
-                style={{ color: "#059669" }}
-              >
-                Estrategia
-              </div>
-              <div className="text-sm" style={{ color: "#f6fef9" }}>
-                Empresarial
-              </div>
-            </div>
-            <div>
-              <div
-                className="text-lg font-semibold"
-                style={{ color: "#e8f7ef" }}
-              >
-                Tecnología
-              </div>
-              <div className="text-sm" style={{ color: "#f6fef9" }}>
-                & Digital
-              </div>
-            </div>
-            <div>
-              <div
-                className="text-lg font-semibold"
-                style={{ color: "#059669" }}
-              >
-                Operaciones
-              </div>
-              <div className="text-sm" style={{ color: "#f6fef9" }}>
-                & Procesos
-              </div>
-            </div>
-          </div>
+          </>
         )}
       </div>
     </section>
